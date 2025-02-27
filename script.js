@@ -28,15 +28,121 @@ function navigateSection(currentId, nextId) {
 
 // Function to handle rating selection
 function selectRating(element) {
-    // Remove selected class from all ratings in this group
+    // Get the selected value
+    const value = element.getAttribute('data-value');
     const parent = element.parentNode;
+    
+    // Remove selected class and reset styles from all ratings in this group
     parent.querySelectorAll('.rating-item').forEach(item => {
         item.classList.remove('selected');
-        item.classList.remove('default-selected'); // Remove default-selected class when user makes a selection
+        item.classList.remove('default-selected');
+        item.style.cssText = '';
     });
     
     // Add selected class to clicked element
     element.classList.add('selected');
+    
+    // Set color and label text based on the value
+    let buttonColor = '';
+    let labelText = '';
+    let labelHeader = '';
+    let labelIcon = '';
+    
+    switch(value) {
+        case '1':
+            buttonColor = '#d90429'; // Red
+            labelHeader = 'Not Started';
+            labelText = 'No capability—losing deals and time.';
+            labelIcon = '❌';
+            break;
+        case '2':
+            buttonColor = '#ff9e00'; // Orange
+            labelHeader = 'Basic';
+            labelText = 'Minimal efforts, inconsistent revenue impact.';
+            labelIcon = '⚠️';
+            break;
+        case '3':
+            buttonColor = '#06d6a0'; // Green
+            labelHeader = 'Developing';
+            labelText = 'Process exists, but not optimized for speed or wins.';
+            labelIcon = '🔄';
+            break;
+        case '4':
+            buttonColor = '#118ab2'; // Cyan
+            labelHeader = 'Strong';
+            labelText = 'Solid execution, driving some revenue lift.';
+            labelIcon = '📈';
+            break;
+        case '5':
+            buttonColor = '#7209b7'; // Purple
+            labelHeader = 'Fully Optimized';
+            labelText = 'Best-in-class, maximizing deal velocity and close rates.';
+            labelIcon = '🏆';
+            break;
+        default:
+            buttonColor = 'var(--primary-color)';
+            labelHeader = '';
+            labelText = '';
+            labelIcon = '';
+    }
+    
+    // Apply color to the selected button
+    element.style.cssText = `
+        background-color: ${buttonColor} !important;
+        color: #fff !important;
+        border-color: transparent !important;
+    `;
+    
+    // Create or update the rating description
+    const questionContainer = parent.closest('.question');
+    let ratingDesc = questionContainer.querySelector('.rating-description');
+    
+    if (!ratingDesc) {
+        ratingDesc = document.createElement('div');
+        ratingDesc.className = 'rating-description';
+        parent.insertAdjacentElement('afterend', ratingDesc);
+    }
+    
+    ratingDesc.innerHTML = `
+        <div class="rating-label" style="color: white; background-color: ${buttonColor};">
+            <span class="label-icon">${labelIcon}</span>
+            <strong class="label-header">${labelHeader}</strong>: ${labelText}
+        </div>
+    `;
+    ratingDesc.style.display = 'block';
+    
+    // Update the progress bar
+    updateProgressBar();
+}
+
+// Function to update the progress bar
+function updateProgressBar() {
+    // Count total questions
+    const totalQuestions = document.querySelectorAll('.rating').length;
+    
+    // Count answered questions (those with a selected rating)
+    const answeredQuestions = document.querySelectorAll('.rating-item.selected').length;
+    
+    // Calculate percentage
+    const percentComplete = Math.round((answeredQuestions / totalQuestions) * 100);
+    
+    // Update progress bar width
+    const progressBar = document.getElementById('progressBar');
+    if (progressBar) {
+        progressBar.style.width = percentComplete + '%';
+    }
+    
+    // Update progress text
+    const progressText = document.querySelector('.progress-text');
+    if (progressText) {
+        progressText.textContent = percentComplete + '% Complete';
+    }
+    
+    // Update questions count
+    const questionsCount = document.querySelector('.questions-count');
+    if (questionsCount) {
+        questionsCount.textContent = answeredQuestions + '/' + totalQuestions + ' Questions';
+    }
 }
 
 // Function to handle hash changes
@@ -71,16 +177,19 @@ function setDefaultValuesForSection(sectionId) {
     const section = document.getElementById(sectionId);
     if (!section) return;
     
-    // Find all question groups in this section
-    const questionGroups = section.querySelectorAll('.question-group');
+    // Find all questions in this section
+    const questions = section.querySelectorAll('.question');
     
-    questionGroups.forEach(group => {
+    questions.forEach(question => {
+        const ratingGroup = question.querySelector('.rating');
+        if (!ratingGroup) return;
+        
         // Check if any rating is selected in this group
-        const hasSelection = group.querySelector('.rating-item.selected');
+        const hasSelection = ratingGroup.querySelector('.rating-item.selected');
         
         // If no rating is selected, select the first one (rating 1)
         if (!hasSelection) {
-            const firstRating = group.querySelector('.rating-item[data-value="1"]');
+            const firstRating = ratingGroup.querySelector('.rating-item[data-value="1"]');
             if (firstRating) {
                 // Use the existing selectRating function to ensure consistent behavior
                 selectRating(firstRating);
@@ -92,6 +201,9 @@ function setDefaultValuesForSection(sectionId) {
             }
         }
     });
+    
+    // Update progress bar after setting defaults
+    updateProgressBar();
 }
 
 // Function to handle navigation button clicks
@@ -282,6 +394,9 @@ document.addEventListener('DOMContentLoaded', function() {
             selectRating(this);
         });
     });
+    
+    // Initialize progress bar
+    updateProgressBar();
     
     // Direct targeting of the first next button
     const firstNextButton = document.querySelector('#section1 .btn-next');
