@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Revenue Acceleration Audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Base Reset */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Poppins', sans-serif;
+}
+body {
+background-color: #FFFFFF;
+color: #333;
+}
+/* Main container – 30% narrower */
+.container {
+width: 70%;
+max-width: 900px;
+margin: 40px auto;
+padding: 0 20px;
+}
+/* Card/Form Wrapper */
+.card {
+background-color: #fff;
+border-radius: 12px;
+border: 2px solid #4169E1; /* Royal blue outline */
+box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
+padding: 20px 25px;
+margin-bottom: 20px;
+}
+.card h1 {
+font-size: 1.5rem; /* Increased headline size */
+margin-bottom: 10px;
+color: #333;
+}
+.card .subtitle {
+font-size: 1.1rem; /* Slightly larger subtitle */
+margin-bottom: 15px;
+color: #333;
+}
+.card p {
+font-size: 0.95rem;
+color: #555;
+margin-bottom: 15px;
+line-height: 1.5;
+}
+/* Each Section */
+.section {
+background-color: #e6f2ff; /* Inside color */
+border-radius: 8px;
+border: 2px solid #4169E1;
+padding: 15px;
+margin-bottom: 20px;
+box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
+}
+.section h2 {
+font-size: 1.2rem; /* Bold & increased size */
+font-weight: 700;
+margin-bottom: 10px;
+color: #333;
+}
+.section p {
+font-size: 0.9rem;
+margin-bottom: 10px;
+color: #333;
+}
+.question {
+margin-bottom: 15px;
+}
+.question p {
+font-size: 0.9rem;
+color: #333;
+margin-bottom: 6px;
+line-height: 1.4;
+}
+.example, .why {
+font-size: 0.85rem;
+color: #777;
+margin-bottom: 6px;
+}
+label {
+display: block;
+font-weight: 500;
+margin-bottom: 5px;
+color: #333;
+}
+/* Dropdowns at 50% width */
+select {
+width: 50%;
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 6px;
+font-size: 0.9rem;
+outline: none;
+}
+/* Button */
+button {
+display: inline-block;
+background-color: #3C8AF9;
+color: #fff;
+padding: 12px 20px;
+border: none;
+border-radius: 8px;
+font-size: 0.95rem;
+cursor: pointer;
+transition: background-color 0.2s ease;
+margin-top: 10px;
+}
+button:hover {
+background-color: #3376d9;
+}
+/* Result Box */
+.result {
+display: none;
+margin-top: 20px;
+background-color: #fff;
+border-radius: 8px;
+border: 2px solid #4169E1;
+box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
+padding: 20px;
+}
+.result h2 {
+font-size: 1.2rem;
+margin-bottom: 10px;
+color: #333;
+}
+.result h3 {
+margin-top: 15px;
+font-size: 1rem;
+color: #333;
+font-weight: 500;
+}
+.result p {
+font-size: 0.9rem;
+color: #555;
+margin-bottom: 8px;
+line-height: 1.5;
+}
+.result em {
+font-style: italic;
+color: #777;
+}
+ul {
+margin-left: 20px;
+margin-bottom: 10px;
+}
+ul li {
+margin-bottom: 6px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="card">
+<h1>AI Revenue Acceleration Audit</h1>
+<p class="subtitle">A Self-Assessment for B2B Tech CROs</p>
+<p><strong>Goal:</strong> Assess how ready your revenue engine (sales + marketing) is to use AI to shorten sales cycles and close more deals. Score each question (1-5) using the key below, then tally your total. <em>Focus: Fast, proven AI wins.</em></p>
+<p>
+<strong>Scoring Key:</strong><br>
+1 = Not Started: No capability—losing deals and time.<br>
+2 = Basic: Minimal efforts, inconsistent revenue impact.<br>
+3 = Developing: Process exists, but not optimized for speed or wins.<br>
+4 = Strong: Solid execution, driving some revenue lift.<br>
+5 = Fully Optimized: Best-in-class, maximizing deal velocity and close rates.
+</p>
+<!-- Section 1: Data for Deals -->
+<div class="section">
+<h2>1. Data for Deals</h2>
+<p>Getting the right data in place is the foundation for targeting high-value accounts quickly. AI speeds up data cleanup and enrichment, reducing qualification time to close deals faster.</p>
+<div class="question">
+<p><strong>Question 1:</strong> Is your CRM data clean and centralized enough to pinpoint high-potential accounts fast?</p>
+<p class="example"><em>Example:</em> 1 = Siloed, outdated; 3 = Centralized but messy; 5 = Unified, actionable daily.</p>
+<p class="why"><em>Why It Matters:</em> Clean data cuts lead qualification time by 30% (SiriusDecisions).</p>
+<label for="dataDealsQ1">Score (1-5):</label>
+<select id="dataDealsQ1" required>
+<option value="">Select</option>
+<option value="1">1 – Not Started</option>
+<option value="2">2 – Basic</option>
+<option value="3">3 – Developing</option>
+<option value="4">4 – Strong</option>
+<option value="5">5 – Fully Optimized</option>
+</select>
+</div>
+<div class="question">
+<p><strong>Question 2:</strong> Can you enrich account data (e.g., firmographics, revenue) without breaking the bank?</p>
+<p class="example"><em>Example:</em> 1 = No enrichment; 3 = Manual updates; 5 = Auto-enriched via tools like ZoomInfo.</p>
+<p class="why"><em>Why It Matters:</em> Enriched data boosts targeting precision—15% more conversions (Forrester).</p>
+<label for="dataDealsQ2">Score (1-5):</label>
+<select id="dataDealsQ2" required>
+<option value="">Select</option>
+<option value="1">1 – Not Started</option>
+<option value="2">2 – Basic</option>
+<option value="3">3 – Developing</option>
+<option value="4">4 – Strong</option>
+<option value="5">5 – Fully Optimized</option>
+</select>
+</div>
+</div>
+<!-- Section 2: Intent to Revenue -->
+<div class="section">
+<h2>2. Intent to Revenue</h2>
+<p>Spotting buying signals and prioritizing hot leads is key to accelerating pipeline movement. AI automates intent tracking and scoring, ensuring reps focus on deals ready to close now.</p>
+<div class="question">
+<p><strong>Question 1:</strong> Can you spot accounts showing buying signals (e.g., website visits, downloads) across channels?</p>
+<p class="example"><em>Example:</em> 1 = No tracking; 3 = Some manual tracking; 5 = Automated via tools like HubSpot.</p>
+<p class="why"><em>Why It Matters:</em> Intent data lifts close rates by 20% (Aberdeen).</p>
+<label for="intentRevQ1">Score (1-5):</label>
+<select id="intentRevQ1" required>
+<option value="">Select</option>
+<option value="1">1 – Not Started</option>
+<option value="2">2 – Basic</option>
+<option value="3">3 – Developing</option>
+<option value="4">4 – Strong</option>
+<option value="5">5 – Fully Optimized</option>
+</select>
+</div>
+<div class="question">
+<p><strong>Question 2:</strong> Do you prioritize leads/accounts with predictive scoring tied to past deal wins?</p>
+<p class="example"><em>Example:</em> 1 = No scoring; 3 = Basic rules; 5 = Predictive, using CRM data.</p>
+<p class="why"><em>Why It Matters:</em> Predictive scoring doubles pipeline velocity (Salesforce study).</p>
+<label for="intentRevQ2">Score (1-5):</label>
+<select id="intentRevQ2" required>
+<option value="">Select</option>
+<option value="1">1 – Not Started</option>
+<option value="2">2 – Basic</option>
+<option value="3">3 – Developing</option>
+<option value="4">4 – Strong</option>
+<option value="5">5 – Fully Optimized</option>
+</select>
+</div>
+</div>
+<!-- Section 3: ICP Precision -->
+<div class="section">
+<h2>3. ICP Precision</h2>
+<p>Defining your Ideal Customer Profile (ICP) ensures you pursue the right deals from the start. AI sharpens ICPs with data and insights, reducing wasted time and boosting win rates fast.</p>
+<div class="question">
+<p><strong>Question 1:</strong> Have you built an Ideal Customer Profile (ICP) using internal customer data (e.g., past wins, revenue)?</p>
+<p class="example"><em>Example:</em> 1 = No ICP; 3 = Rough profile, manual; 5 = Data-driven ICP from CRM analytics.</p>
+<p class="why"><em>Why It Matters:</em> A solid ICP boosts win rates by 25% by targeting the right accounts (HubSpot).</p>
+<label for="icpQ1">Score (1-5):</label>
+<select id="icpQ1" required>
+<option value="">Select</option>
+<option value="1">1 – Not Started</option>
+<option value="2">2 – Basic</option>
+<option value="3">3 – Developing</option>
+<option value="4">4 – Strong</option>
+<option value="5">5 – Fully Optimized</option>
+</select>
+</div>
+<div class="question">
+<p><strong>Question 2:</strong> Have you used LLMs like ChatGPT, Perplexity, or Grok 3 to conduct persona research using LLM models and web data?</p>
+<p class="example"><em>Example:</em> 1 = No LLM use; 3 = Basic manual research; 5 = LLMs pull web insights for personas.</p>
+<p class="why"><em>Why It Matters:</em> LLM-enhanced personas lift deal sizes by 20% with deeper buyer insights (Gartner).</p>
+<label for="icpQ2">Score (1-5):</label>
+<select id="icpQ2" required>
+<option value="">Select</option>
+<option value="1">1 – Not Started</option>
+<option value="2">2 – Basic</option>
+<option value="3">3 – Developing</option>
+<option value="4">4 – Strong</option>
+<option value="5">5 – Fully Optimized</option>
+</select>
+</div>
+</div>
+<!-- Section 4: Pipeline-Relevant Content -->
+<div class="section">
+<h2>4. Pipeline-Relevant Content</h2>
+<p>Content that’s ready and aligned keeps sales moving through the buyer’s journey. AI optimizes content delivery, reducing prep time and accelerating deal closures.</p>
+<div class="question">
+<p><strong>Question 1:</strong> Is your content library organized to arm sales with deal-closing assets?</p>
+<p class="example"><em>Example:</em> 1 = Scattered files; 3 = Organized but static; 5 = Tagged, sales-ready library.</p>
+<p class="why"><em>Why It Matters:</em> Accessible content cuts sales prep time by 25% (CSO Insights).</p>
+<label for="contentQ1">Score (1-5):</label>
+<select id="contentQ1" required>
+<option value="">Select</option>
+<option value="1">1 – Not Started</option>
+<option value="2">2 – Basic</option>
+<option value="3">3 – Developing</option>
+<option value="4">4 – Strong</option>
+<option value="5">5 – Fully Optimized</option>
+</select>
+</div>
+<div class="question">
+<p><strong>Question 2:</strong> Do you have content for each buyer’s journey stage (awareness, consideration, decision) that speeds deals?</p>
+<p class="example"><em>Example:</em> 1 = No mapping; 3 = Some stage coverage; 5 = Journey-aligned, proven to convert.</p>
+<p class="why"><em>Why It Matters:</em> Journey-aligned content shortens sales cycles by 18% (Gartner).</p>
+<label for="contentQ2">Score (1-5):</label>
+<select id="contentQ2" required>
+<option value="">Select</option>
+<option value="1">1 – Not Started</option>
+<option value="2">2 – Basic</option>
+<option value="3">3 – Developing</option>
+<option value="4">4 – Strong</option>
+<option value="5">5 – Fully Optimized</option>
+</select>
+</div>
+</div>
+<!-- Section 5: Lead-to-Deal Flow -->
+<div class="section">
+<h2>5. Lead-to-Deal Flow</h2>
+<p>Smooth handoffs and velocity tracking turn leads into revenue without delays. AI automates transitions and identifies bottlenecks, shortening cycles and increasing wins.</p>
+<div class="question">
+<p><strong>Question 1:</strong> Can you automate lead handoffs to sales based on engagement triggers?</p>
+<p class="example"><em>Example:</em> 1 = Manual handoffs; 3 = Basic automation; 5 = Trigger-based (e.g., Marketo).</p>
+<p class="why"><em>Why It Matters:</em> Automation reduces handoff delays by 40% (HubSpot data).</p>
+<label for="flowQ1">Score (1-5):</label>
+<select id="flowQ1" required>
+<option value="">Select</option>
+<option value="1">1 – Not Started</option>
+<option value="2">2 – Basic</option>
+<option value="3">3 – Developing</option>
+<option value="4">4 – Strong</option>
+<option value="5">5 – Fully Optimized</option>
+</select>
+</div>
+<div class="question">
+<p><strong>Question 2:</strong> Do you track pipeline velocity (e.g., time to close) to spot bottlenecks?</p>
+<p class="example"><em>Example:</em> 1 = No tracking; 3 = Basic metrics; 5 = Detailed velocity KPIs in CRM.</p>
+<p class="why"><em>Why It Matters:</em> Velocity tracking lifts close rates by 15% (Velocify).</p>
+<label for="flowQ2">Score (1-5):</label>
+<select id="flowQ2" required>
+<option value="">Select</option>
+<option value="1">1 – Not Started</option>
+<option value="2">2 – Basic</option>
+<option value="3">3 – Developing</option>
+<option value="4">4 – Strong</option>
+<option value="5">5 – Fully Optimized</option>
+</select>
+</div>
+</div>
+<!-- Section 6: ABM for Revenue -->
+<div class="section">
+<h2>6. ABM for Revenue</h2>
+<p>ABM targets high-value accounts with precision to maximize deal size and speed. AI scales personalization and metrics, driving larger wins in less time.</p>
+<div class="question">
+<p><strong>Question 1:</strong> Can you automate personalized outreach to your top 20 accounts using current tools?</p>
+<p class="example"><em>Example:</em> 1 = Manual emails; 3 = Basic sequences; 5 = Multi-channel automation (e.g., Outreach).</p>
+<p class="why"><em>Why It Matters:</em> ABM automation boosts deal size by 20% (TOPO).</p>
+<label for="abmQ1">Score (1-5):</label>
+<select id="abmQ1" required>
+<option value="">Select</option>
+<option value="1">1 – Not Started</option>
+<option value="2">2 – Basic</option>
+<option value="3">3 – Developing</option>
+<option value="4">4 – Strong</option>
+<option value="5">5 – Fully Optimized</option>
+</select>
+</div>
+<div class="question">
+<p><strong>Question 2:</strong> Do you measure ABM success with revenue metrics (e.g., pipeline contribution, win rate)?</p>
+<p class="example"><em>Example:</em> 1 = Vanity metrics only; 3 = Some revenue tracking; 5 = Full revenue attribution.</p>
+<p class="why"><em>Why It Matters:</em> Revenue-focused ABM doubles ROI (ITSMA).</p>
+<label for="abmQ2">Score (1-5):</label>
+<select id="abmQ2" required>
+<option value="">Select</option>
+<option value="1">1 – Not Started</option>
+<option value="2">2 – Basic</option>
+<option value="3">3 – Developing</option>
+<option value="4">4 – Strong</option>
+<option value="5">5 – Fully Optimized</option>
+</select>
+</div>
+</div>
+<!-- Section 7: Tech That Sells -->
+<div class="section">
+<h2>7. Tech That Sells</h2>
+<p>A stack that prioritizes revenue tasks is the backbone of fast sales cycles. AI integrations and automation reduce manual work, enabling reps to close more deals quickly.</p>
+<div class="question">
+<p><strong>Question 1:</strong> Does your stack (CRM, MAP) integrate to prioritize revenue-generating activities?</p>
+<p class="example"><em>Example:</em> 1 = Disconnected tools; 3 = Partial integration; 5 = Seamless, AI-ready stack.</p>
+<p class="why"><em>Why It Matters:</em> Integrated stacks lift productivity by 30% (McKinsey).</p>
+<label for="techQ1">Score (1-5):</label>
+<select id="techQ1" required>
+<option value="">Select</option>
+<option value="1">1 – Not Started</option>
+<option value="2">2 – Basic</option>
+<option value="3">3 – Developing</option>
+<option value="4">4 – Strong</option>
+<option value="5">5 – Fully Optimized</option>
+</select>
+</div>
+<div class="question">
+<p><strong>Question 2:</strong> Can you use existing tools (e.g., Zapier) or low-cost automation (e.g., n8n) to schedule discovery calls in seconds vs. manual delays?</p>
+<p class="example"><em>Example:</em> 1 = All manual; 3 = Some automation; 5 = n8n auto-schedules calls instantly.</p>
+<p class="why"><em>Why It Matters:</em> Calls scheduled immediately are 60% more likely to happen (InsideSales).</p>
+<label for="techQ2">Score (1-5):</label>
+<select id="techQ2" required>
+<option value="">Select</option>
+<option value="1">1 – Not Started</option>
+<option value="2">2 – Basic</option>
+<option value="3">3 – Developing</option>
+<option value="4">4 – Strong</option>
+<option value="5">5 – Fully Optimized</option>
+</select>
+</div>
+</div>
+<!-- Section 8: Team Revenue Readiness -->
+<div class="section">
+<h2>8. Team Revenue Readiness</h2>
+<p>A team that leverages AI insights closes deals faster with less effort. AI tools and clear goals align reps to win more business in less time.</p>
+<div class="question">
+<p><strong>Question 1:</strong> Can your team use tools like Copilot or Grok to instantly research accounts/leads before calls?</p>
+<p class="example"><em>Example:</em> 1 = No tools; 3 = Manual research; 5 = AI tools deliver instant insights.</p>
+<p class="why"><em>Why It Matters:</em> Pre-call prep with AI cuts research time by 50%, boosting win rates by 15% (Gong).</p>
+<label for="teamQ1">Score (1-5):</label>
+<select id="teamQ1" required>
+<option value="">Select</option>
+<option value="1">1 – Not Started</option>
+<option value="2">2 – Basic</option>
+<option value="3">3 – Developing</option>
+<option value="4">4 – Strong</option>
+<option value="5">5 – Fully Optimized</option>
+</select>
+</div>
+<div class="question">
+<p><strong>Question 2:</strong> Have you set AI goals like ‘cut sales cycles by 25%’ or ‘increase win rates by 20%’ tied to specific deals?</p>
+<p class="example"><em>Example:</em> 1 = No goals; 3 = General ideas; 5 = Precise, deal-focused targets.</p>
+<p class="why"><em>Why It Matters:</em> Specific goals drive 20% faster execution (HBR).</p>
+<label for="teamQ2">Score (1-5):</label>
+<select id="teamQ2" required>
+<option value="">Select</option>
+<option value="1">1 – Not Started</option>
+<option value="2">2 – Basic</option>
+<option value="3">3 – Developing</option>
+<option value="4">4 – Strong</option>
+<option value="5">5 – Fully Optimized</option>
+</select>
+</div>
+</div>
+<button type="button" onclick="calculateScore()">Calculate Total Score</button>
+</form>
+</div>
+<div id="result" class="result"></div>
+</div>
+<script>
+function calculateScore() {
+// Define all 16 question IDs (8 sections x 2 questions)
+const questions = [
+'dataDealsQ1', 'dataDealsQ2',
+'intentRevQ1', 'intentRevQ2',
+'icpQ1', 'icpQ2',
+'contentQ1', 'contentQ2',
+'flowQ1', 'flowQ2',
+'abmQ1', 'abmQ2',
+'techQ1', 'techQ2',
+'teamQ1', 'teamQ2'
+];
+let sum = 0;
+for (let id of questions) {
+let score = parseInt(document.getElementById(id).value);
+if (isNaN(score)) {
+alert("Please select a score for all questions.");
+return;
+}
+sum += score;
+}
+// Total score out of 40 = sum / 2
+let totalScore = Math.round(sum / 2);
+let readinessHTML = "";
+if (totalScore <= 18) {
+readinessHTML = `
+<h3>Low Readiness – Address Prolonged Cycles and Lost Opportunities</h3>
+<p><strong>Assessment:</strong> Your sales cycles likely exceed 90 days due to fragmented data and manual processes, leading to missed high-potential deals. Without change, your win rates may remain below 20%, leaving you at a severe competitive disadvantage.</p>
+<p><strong>Actions with Top Tools:</strong></p>
+<ul>
+<li><em>Data Boost:</em> Use Cognism ($39/month) to enrich prospect data from 50M+ contacts, then sync hourly to your CRM with Make.com ($9/month)—reduce qualification time by 30% (e.g., 10 to 7 hours/week).</li>
+<li><em>Intent Jumpstart:</em> Identify signals with Keyplay ($99/month) via public data, and automate Slack pings with Make.com—improve close rates by 20% (e.g., 15% to 18%) in 3 weeks.</li>
+<li><em>ICP Basics:</em> Build an ICP with Ocean.io ($99/month) from closed deals, and refine it with n8n ($20/month) using LLM persona tweaks—enhance win rates by 25% in 30 days.</li>
+</ul>
+<p><strong>Payoff:</strong></p>
+<ul>
+<li>Organizations reduced sales cycles from 90 to 65 days (+28% faster velocity).</li>
+<li>Increased win rates from 15% to 20% (+33% improvement).</li>
+<li>Grew pipeline revenue by 18% in 3 months (Forrester, 2024).</li>
+</ul>
+<p><strong>Why AI Matters:</strong></p>
+<ul>
+<li>These tools automate data and targeting—allowing reps to focus on closing deals, accelerating wins by 30%.</li>
+</ul>
+`;
+} else if (totalScore <= 30) {
+readinessHTML = `
+<h3>Moderate Readiness – Enhance Efficiency and Revenue Potential</h3>
+<p><strong>Assessment:</strong> Your sales cycles average around 60 days with win rates near 25%. Partial automation and unrefined targeting delay deals, leaving significant revenue opportunities untapped.</p>
+<p><strong>Actions with Top Tools:</strong></p>
+<ul>
+<li><em>ICP Refinement:</em> Use Clay.com ($149/month) to analyze customer patterns, then auto-update ICP lists with Make.com ($9/month)—double pipeline velocity and boost conversions 22% in 60 days.</li>
+<li><em>Content Automation:</em> Generate icebreakers with Warmer.ai ($97/month), triggering delivery with Make.com based on buyer stage—shorten closes by 18% (e.g., 60 to 49 days) in 30 days.</li>
+<li><em>Handoff Speed:</em> Automate routing with Sybill.ai ($59/month) and log delays with n8n ($20/month)—reduce handoff time by 40% and lift close rates by 15% in 6 weeks.</li>
+</ul>
+<p><strong>Payoff:</strong></p>
+<ul>
+<li>Organizations shortened cycles from 60 to 45 days (+25% faster velocity).</li>
+<li>Win rates rose from 25% to 32% (+28% improvement).</li>
+<li>Pipeline revenue jumped 22% in 4 months (Gartner, 2024).</li>
+</ul>
+<p><strong>Why AI Matters:</strong></p>
+<ul>
+<li>Cost-effective AI tools reduce delays by 40% and drive 20% larger wins with minimal effort.</li>
+</ul>
+`;
+} else {
+readinessHTML = `
+<h3>High Readiness – Optimize for Market Leadership</h3>
+<p><strong>Assessment:</strong> With sales cycles around 50 days and win rates near 30%, your process is strong—but suboptimal personalization and manual prep work are capping your potential. Further refinement will position you ahead of competitors and maximize revenue velocity.</p>
+<p><strong>Actions with Top Tools:</strong></p>
+<ul>
+<li><em>ABM Precision:</em> Enrich ABM targets with Clay.com ($149/month), orchestrate campaigns with Make.com ($9/month), and personalize with n8n + LLM—grow deal sizes by 35% (e.g., $150K to $202K) in 6 months.</li>
+<li><em>Pre-Meeting Edge:</em> Compile briefs with Humanlinker ($75/month) and Sybill.ai ($59/month), automated via Make.com—improve win rates by 20% (e.g., 30% to 36%) in 90 days.</li>
+<li><em>Tech Power:</em> Scale email with Smartlead.ai ($39/month) and automate tasks with Bardeen.ai ($10/month)—reduce cycles by 45% (e.g., 50 to 27 days) and boost revenue by 30% in 4 months.</li>
+</ul>
+<p><strong>Payoff:</strong></p>
+<ul>
+<li>Organizations shortened cycles from 50 to 30 days (+40% faster velocity).</li>
+<li>Win rates improved from 30% to 40% (+33% improvement).</li>
+<li>Revenue grew by 35% in 6 months (HubSpot, 2024).</li>
+</ul>
+<p><strong>Why AI Matters:</strong></p>
+<ul>
+<li>Precision AI tools transform your sales engine—delivering faster cycles and larger wins for under $200/month.</li>
+</ul>
+`;
+}
+document.getElementById("result").style.display = "block";
+document.getElementById("result").innerHTML = `
+<h2>Total Score: ${totalScore} / 40</h2>
+${readinessHTML}
+`;
+}
+</script>
+</body>
+</html>

@@ -216,7 +216,7 @@ nav ul li a:hover {
 .hero {
     background: linear-gradient(135deg, #4361ee 0%, #7209b7 100%);
     color: white;
-    padding: 10rem 0 7rem;
+    padding: 5rem 0 3.5rem;
     position: relative;
     overflow: hidden;
 }
@@ -1320,7 +1320,7 @@ footer::before {
     }
     
     .hero {
-        padding: 7rem 0 4rem;
+        padding: 3.5rem 0 2rem;
     }
     
     .hero-content h1 {
@@ -1515,4 +1515,314 @@ footer::before {
 
 .toast-message {
     font-weight: 500;
+}
+
+/* Detailed Summary Styles */
+.score-interpretation h3 {
+    color: var(--primary-color);
+    margin: 1.5rem 0 1rem;
+    font-size: 1.4rem;
+}
+
+.score-interpretation ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    list-style-type: disc;
+}
+
+.score-interpretation li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+}
+
+.score-interpretation em {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-style: italic;
+}
+
+.score-interpretation strong {
+    font-weight: 700;
+}
+
+/* Enhanced Results Section Styling */
+.score-interpretation {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(248,249,250,1) 100%);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.score-interpretation h3 {
+    position: relative;
+    padding-bottom: 0.8rem;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.6rem;
+}
+
+.score-interpretation h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 3px;
+}
+
+.score-interpretation p strong {
+    color: var(--primary-color);
+}
+
+/* Action items grid layout */
+.score-interpretation ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    padding-left: 0;
+    list-style-position: inside;
+}
+
+.score-interpretation li {
+    background-color: rgba(67, 97, 238, 0.03);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.score-interpretation li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+/* Payoff section styling */
+.score-interpretation p:has(+ ul:last-of-type) {
+    margin-top: 1.5rem;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+/* Why AI Matters section */
+.score-interpretation ul:last-of-type {
+    background: linear-gradient(135deg, rgba(67, 97, 238, 0.08) 0%, rgba(114, 9, 183, 0.08) 100%);
+    padding: 1.2rem;
+    border-radius: 10px;
+    grid-template-columns: 1fr;
+}
+
+.score-interpretation ul:last-of-type li {
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .score-interpretation ul {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Powered by SpotCircuit styling */
+.powered-by {
+    font-size: 0.85rem;
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.powered-by a {
+    color: var(--gray-color);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.powered-by a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.powered-by a:hover {
+    color: var(--primary-color);
+}
+
+.powered-by a:hover::after {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .powered-by {
+        margin-top: -0.25rem;
+        margin-bottom: 0.25rem;
+    }
+}
+
+/* Hero Benefits Styling */
+.hero-benefits {
+    margin-top: 1.5rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+}
+
+.hero-benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.8rem 0 2rem;
+}
+
+.hero-benefits-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.05rem;
+}
+
+.hero-benefits-list i {
+    color: #38b000;
+    margin-right: 0.8rem;
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    padding: 0.15rem;
+}
+
+@media (max-width: 768px) {
+    .hero-benefits {
+        font-size: 1rem;
+    }
+    
+    .hero-benefits-list li {
+        font-size: 0.95rem;
+    }
+}
+
+/* Enhanced Header and Hero Styling */
+.logo h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.3rem;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.powered-by {
+    font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+}
+
+.powered-by a {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 3px;
+    letter-spacing: 0.3px;
+}
+
+.powered-by a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transition: width 0.3s ease;
+}
+
+.powered-by a:hover::after {
+    width: 100%;
+}
+
+/* Adjust hero section padding */
+.hero {
+    padding-top: 6rem;  /* Increased from 5rem to bring content down */
+}
+
+.hero-content {
+    padding-top: 1rem;  /* Additional padding at the top */
+}
+
+.hero-content h2 {
+    margin-top: 0.5rem;  /* Add some space at the top */
+}
+
+@media (max-width: 768px) {
+    .logo h1 {
+        font-size: 1.8rem;
+    }
+    
+    .powered-by {
+        font-size: 0.9rem;
+    }
+    
+    .hero {
+        padding-top: 4.5rem;
+    }
+}
+
+/* Additional hero section padding adjustment */
+.hero {
+    padding-top: 8rem;  /* Increased from 6rem to 8rem */
+}
+
+.hero-content {
+    padding-top: 2rem;  /* Increased from 1rem to 2rem */
+}
+
+.hero-content h2 {
+    margin-top: 1rem;  /* Increased from 0.5rem to 1rem */
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding-top: 6rem;  /* Increased from 4.5rem to 6rem for mobile */
+    }
+    
+    .hero-content {
+        padding-top: 1.5rem;  /* Adjusted for mobile */
+    }
+}
+
+/* Reduce hero section bottom padding */
+.hero {
+    padding-bottom: 1px !important;  /* Minimal bottom padding */
+}
+
+.hero .container {
+    margin-bottom: 1px;
+}
+
+.hero-content {
+    margin-bottom: 1px;
+}
+
+.btn-primary {
+    margin-bottom: 1px;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding-bottom: 1px !important;
+    }
 }

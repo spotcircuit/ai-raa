@@ -146,13 +146,74 @@ function calculateScore() {
     // Determine readiness level
     const averageScore = totalScore / totalQuestions;
     let readinessLevel = '';
+    let detailedSummary = '';
     
     if (averageScore < 2) {
         readinessLevel = 'Low Readiness';
+        detailedSummary = `
+            <h3>Low Readiness – Address Prolonged Cycles and Lost Opportunities</h3>
+            <p><strong>Assessment:</strong> Your sales cycles likely exceed 90 days due to fragmented data and manual processes, leading to missed high-potential deals. Without change, your win rates may remain below 20%, leaving you at a severe competitive disadvantage.</p>
+            <p><strong>Actions with Top Tools:</strong></p>
+            <ul>
+                <li><em>Data Boost:</em> Use Cognism ($39/month) to enrich prospect data from 50M+ contacts, then sync hourly to your CRM with Make.com ($9/month)—reduce qualification time by 30% (e.g., 10 to 7 hours/week).</li>
+                <li><em>Intent Jumpstart:</em> Identify signals with Keyplay ($99/month) via public data, and automate Slack pings with Make.com—improve close rates by 20% (e.g., 15% to 18%) in 3 weeks.</li>
+                <li><em>ICP Basics:</em> Build an ICP with Ocean.io ($99/month) from closed deals, and refine it with n8n ($20/month) using LLM persona tweaks—enhance win rates by 25% in 30 days.</li>
+            </ul>
+            <p><strong>Payoff:</strong></p>
+            <ul>
+                <li>Organizations reduced sales cycles from 90 to 65 days (+28% faster velocity).</li>
+                <li>Increased win rates from 15% to 20% (+33% improvement).</li>
+                <li>Grew pipeline revenue by 18% in 3 months (Forrester, 2024).</li>
+            </ul>
+            <p><strong>Why AI Matters:</strong></p>
+            <ul>
+                <li>These tools automate data and targeting—allowing reps to focus on closing deals, accelerating wins by 30%.</li>
+            </ul>
+        `;
     } else if (averageScore < 3.5) {
         readinessLevel = 'Medium Readiness';
+        detailedSummary = `
+            <h3>Moderate Readiness – Enhance Efficiency and Revenue Potential</h3>
+            <p><strong>Assessment:</strong> Your sales cycles average around 60 days with win rates near 25%. Partial automation and unrefined targeting delay deals, leaving significant revenue opportunities untapped.</p>
+            <p><strong>Actions with Top Tools:</strong></p>
+            <ul>
+                <li><em>ICP Refinement:</em> Use Clay.com ($149/month) to analyze customer patterns, then auto-update ICP lists with Make.com ($9/month)—double pipeline velocity and boost conversions 22% in 60 days.</li>
+                <li><em>Content Automation:</em> Generate icebreakers with Warmer.ai ($97/month), triggering delivery with Make.com based on buyer stage—shorten closes by 18% (e.g., 60 to 49 days) in 30 days.</li>
+                <li><em>Handoff Speed:</em> Automate routing with Sybill.ai ($59/month) and log delays with n8n ($20/month)—reduce handoff time by 40% and lift close rates by 15% in 6 weeks.</li>
+            </ul>
+            <p><strong>Payoff:</strong></p>
+            <ul>
+                <li>Organizations shortened cycles from 60 to 45 days (+25% faster velocity).</li>
+                <li>Win rates rose from 25% to 32% (+28% improvement).</li>
+                <li>Pipeline revenue jumped 22% in 4 months (Gartner, 2024).</li>
+            </ul>
+            <p><strong>Why AI Matters:</strong></p>
+            <ul>
+                <li>Cost-effective AI tools reduce delays by 40% and drive 20% larger wins with minimal effort.</li>
+            </ul>
+        `;
     } else {
         readinessLevel = 'High Readiness';
+        detailedSummary = `
+            <h3>High Readiness – Optimize for Market Leadership</h3>
+            <p><strong>Assessment:</strong> With sales cycles around 50 days and win rates near 30%, your process is strong—but suboptimal personalization and manual prep work are capping your potential. Further refinement will position you ahead of competitors and maximize revenue velocity.</p>
+            <p><strong>Actions with Top Tools:</strong></p>
+            <ul>
+                <li><em>ABM Precision:</em> Enrich ABM targets with Clay.com ($149/month), orchestrate campaigns with Make.com ($9/month), and personalize with n8n + LLM—grow deal sizes by 35% (e.g., $150K to $202K) in 6 months.</li>
+                <li><em>Pre-Meeting Edge:</em> Compile briefs with Humanlinker ($75/month) and Sybill.ai ($59/month), automated via Make.com—improve win rates by 20% (e.g., 30% to 36%) in 90 days.</li>
+                <li><em>Tech Power:</em> Scale email with Smartlead.ai ($39/month) and automate tasks with Bardeen.ai ($10/month)—reduce cycles by 45% (e.g., 50 to 27 days) and boost revenue by 30% in 4 months.</li>
+            </ul>
+            <p><strong>Payoff:</strong></p>
+            <ul>
+                <li>Organizations shortened cycles from 50 to 30 days (+40% faster velocity).</li>
+                <li>Win rates improved from 30% to 40% (+33% improvement).</li>
+                <li>Revenue grew by 35% in 6 months (HubSpot, 2024).</li>
+            </ul>
+            <p><strong>Why AI Matters:</strong></p>
+            <ul>
+                <li>Precision AI tools transform your sales engine—delivering faster cycles and larger wins for under $200/month.</li>
+            </ul>
+        `;
     }
     
     // Show results section
@@ -168,6 +229,7 @@ function calculateScore() {
                 <div class="score-interpretation">
                     <h4>${readinessLevel} (${averageScore.toFixed(1)}/5.0)</h4>
                     <p>Your organization is at the <strong>${readinessLevel}</strong> stage in terms of AI revenue acceleration capabilities.</p>
+                    ${detailedSummary}
                 </div>
             </div>
             <div class="cta-container">
