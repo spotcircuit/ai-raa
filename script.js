@@ -28,15 +28,77 @@ function navigateSection(currentId, nextId) {
 
 // Function to handle rating selection
 function selectRating(element) {
-    // Remove selected class from all ratings in this group
+    // Get the selected value
+    const value = element.getAttribute('data-value');
     const parent = element.parentNode;
+    
+    // Remove selected class and reset styles from all ratings in this group
     parent.querySelectorAll('.rating-item').forEach(item => {
         item.classList.remove('selected');
-        item.classList.remove('default-selected'); // Remove default-selected class when user makes a selection
+        item.classList.remove('default-selected');
+        item.style.backgroundColor = '';
+        item.style.color = '';
+        item.style.fontWeight = '';
     });
     
     // Add selected class to clicked element
     element.classList.add('selected');
+    
+    // Get the question container
+    const questionContainer = parent.closest('.question');
+    
+    // Set the text and color based on the value
+    let scoreText = '';
+    let scoreColor = '';
+    
+    switch(value) {
+        case '1':
+            scoreText = 'Not Started';
+            scoreColor = 'var(--danger-color)';
+            break;
+        case '2':
+            scoreText = 'Basic';
+            scoreColor = 'var(--warning-color)';
+            break;
+        case '3':
+            scoreText = 'Intermediate';
+            scoreColor = '#FFC107';
+            break;
+        case '4':
+            scoreText = 'Advanced';
+            scoreColor = '#4CAF50';
+            break;
+        case '5':
+            scoreText = 'Fully Optimized';
+            scoreColor = 'var(--success-color)';
+            break;
+        default:
+            scoreText = 'Not Selected';
+            scoreColor = 'var(--gray-color)';
+    }
+    
+    // Apply color to the selected button
+    element.style.backgroundColor = scoreColor;
+    element.style.color = '#fff';
+    element.style.fontWeight = '600';
+    
+    // Update or create the rating description
+    let ratingDesc = questionContainer.querySelector('.rating-description');
+    if (!ratingDesc) {
+        // Remove old rating labels if they exist
+        const oldLabels = questionContainer.querySelector('.rating-labels');
+        if (oldLabels) {
+            oldLabels.style.display = 'none';
+        }
+        
+        // Create new rating description
+        ratingDesc = document.createElement('div');
+        ratingDesc.className = 'rating-description';
+        parent.insertAdjacentElement('afterend', ratingDesc);
+    }
+    
+    ratingDesc.innerHTML = `<span class="rating-value" style="color: ${scoreColor};">${value} - ${scoreText}</span>`;
+    ratingDesc.style.display = 'block';
 }
 
 // Function to handle hash changes
@@ -71,242 +133,221 @@ function setDefaultValuesForSection(sectionId) {
     const section = document.getElementById(sectionId);
     if (!section) return;
     
-    // Find all question groups in this section
-    const questionGroups = section.querySelectorAll('.question-group');
+    // Get all rating groups in the section
+    const ratingGroups = section.querySelectorAll('.rating');
     
-    questionGroups.forEach(group => {
-        // Check if any rating is selected in this group
-        const hasSelection = group.querySelector('.rating-item.selected');
+    ratingGroups.forEach(group => {
+        // Check if any rating in this group is already selected
+        const selectedRating = group.querySelector('.rating-item.selected');
         
-        // If no rating is selected, select the first one (rating 1)
-        if (!hasSelection) {
-            const firstRating = group.querySelector('.rating-item[data-value="1"]');
-            if (firstRating) {
-                // Use the existing selectRating function to ensure consistent behavior
-                selectRating(firstRating);
-                
-                // Add default-selected class to indicate this was auto-selected
-                firstRating.classList.add('default-selected');
-                
-                console.log('Set default rating 1 for question in section', sectionId);
+        // If no rating is selected, select the default (middle) rating
+        if (!selectedRating) {
+            const defaultRating = group.querySelector('.rating-item[data-value="3"]');
+            if (defaultRating) {
+                defaultRating.classList.add('default-selected');
+                // Call selectRating to update the UI and store the value
+                selectRating(defaultRating);
             }
         }
     });
 }
 
-// Function to handle navigation button clicks
-function handleNavigationButtonClick(event) {
-    const currentSection = this.closest('.audit-section').id;
-    const nextSection = this.getAttribute('data-next') || this.getAttribute('data-prev');
-    setDefaultValuesForSection(currentSection);
-    navigateSection(currentSection, nextSection);
-}
-
-// Calculate score and show results
+// Function to calculate the score
 function calculateScore() {
-    // Set default values for all unanswered questions in all sections
-    for (let i = 1; i <= 8; i++) {
-        setDefaultValuesForSection('section' + i);
-    }
-    
-    // Get all ratings
-    const ratings = document.querySelectorAll('.rating-item.selected');
-    
-    // Count total score
     let totalScore = 0;
-    let totalQuestions = document.querySelectorAll('.question-group').length;
+    let answeredQuestions = 0;
     
-    // If we can't find question groups, count the questions directly
-    if (totalQuestions === 0) {
-        totalQuestions = document.querySelectorAll('.question').length;
-    }
+    // Get all rating groups
+    const ratingGroups = document.querySelectorAll('.rating');
     
-    // Calculate maximum possible score
-    const maxPossibleScore = totalQuestions * 5;
-    
-    ratings.forEach(rating => {
-        const value = parseInt(rating.getAttribute('data-value'));
-        totalScore += value;
+    ratingGroups.forEach(group => {
+        // Find the selected rating in this group
+        const selectedRating = group.querySelector('.rating-item.selected, .rating-item.default-selected');
+        
+        if (selectedRating) {
+            // Get the value of the selected rating
+            const value = parseInt(selectedRating.getAttribute('data-value'));
+            totalScore += value;
+            answeredQuestions++;
+        }
     });
     
-    console.log("Total score:", totalScore);
-    console.log("Total questions:", totalQuestions);
-    console.log("Maximum possible score:", maxPossibleScore);
+    // Calculate the average score
+    const averageScore = answeredQuestions > 0 ? Math.round(totalScore / answeredQuestions) : 0;
     
-    // All questions should now be answered with at least the default value of 1
+    // Display the results
+    document.getElementById('score').textContent = totalScore;
     
-    // Get current scroll position
-    const currentScrollY = window.scrollY;
-    
-    // Hide all sections
-    document.querySelectorAll('.audit-section').forEach(section => {
-        section.classList.remove('active');
-    });
-    
-    // Determine readiness level
-    const averageScore = totalScore / totalQuestions;
+    // Determine readiness level based on score
     let readinessLevel = '';
     let detailedSummary = '';
     
-    if (averageScore < 2) {
+    if (totalScore <= 18) {
         readinessLevel = 'Low Readiness';
-        detailedSummary = `
-            <h3>Low Readiness – Address Prolonged Cycles and Lost Opportunities</h3>
-            <p><strong>Assessment:</strong> Your sales cycles likely exceed 90 days due to fragmented data and manual processes, leading to missed high-potential deals. Without change, your win rates may remain below 20%, leaving you at a severe competitive disadvantage.</p>
-            <p><strong>Actions with Top Tools:</strong></p>
+        document.getElementById('readiness-level').style.color = 'var(--danger-color)';
+        
+        detailedSummary = 
+            <h3>Assessment: Low AI Readiness</h3>
+            <p>Your organization is in the early stages of AI readiness. Your current revenue operations have minimal AI integration, with significant opportunities for improvement.</p>
+            
+            <h3>Actions with Tools:</h3>
             <ul>
-                <li><em>Data Boost:</em> Use Cognism ($39/month) to enrich prospect data from 50M+ contacts, then sync hourly to your CRM with Make.com ($9/month)—reduce qualification time by 30% (e.g., 10 to 7 hours/week).</li>
-                <li><em>Intent Jumpstart:</em> Identify signals with Keyplay ($99/month) via public data, and automate Slack pings with Make.com—improve close rates by 20% (e.g., 15% to 18%) in 3 weeks.</li>
-                <li><em>ICP Basics:</em> Build an ICP with Ocean.io ($99/month) from closed deals, and refine it with n8n ($20/month) using LLM persona tweaks—enhance win rates by 25% in 30 days.</li>
+                <li>Start with <em>data cleanup</em> in your CRM - this is the foundation for any AI implementation.</li>
+                <li>Implement basic <em>lead scoring</em> using simple rules before moving to AI-based scoring.</li>
+                <li>Adopt a <em>content management system</em> that can centralize your marketing assets.</li>
+                <li>Begin <em>tracking customer interactions</em> across channels to build your data foundation.</li>
+                <li>Consider a <em>pilot project</em> with a managed AI service in one specific area (e.g., email personalization).</li>
             </ul>
-            <p><strong>Payoff:</strong></p>
+            
+            <h3>Payoff:</h3>
+            <p>Focus on these fundamentals first to build your AI foundation. You can expect:</p>
             <ul>
-                <li>Organizations reduced sales cycles from 90 to 65 days (+28% faster velocity).</li>
-                <li>Increased win rates from 15% to 20% (+33% improvement).</li>
-                <li>Grew pipeline revenue by 18% in 3 months (Forrester, 2024).</li>
+                <li>20-30% reduction in manual data entry tasks</li>
+                <li>15% improvement in lead quality through basic scoring</li>
+                <li>Faster sales cycles by eliminating low-value activities</li>
             </ul>
-            <p><strong>Why AI Matters:</strong></p>
+            
+            <h3>Why AI Matters:</h3>
             <ul>
-                <li>These tools automate data and targeting—allowing reps to focus on closing deals, accelerating wins by 30%.</li>
+                <li>Companies that successfully implement AI in sales see a <strong>50% increase in leads and appointments</strong> (McKinsey)</li>
+                <li>AI-enhanced teams achieve <strong>27% higher win rates</strong> and <strong>40% more conversions</strong> (Harvard Business Review)</li>
             </ul>
-        `;
-    } else if (averageScore < 3.5) {
-        readinessLevel = 'Medium Readiness';
-        detailedSummary = `
-            <h3>Moderate Readiness – Enhance Efficiency and Revenue Potential</h3>
-            <p><strong>Assessment:</strong> Your sales cycles average around 60 days with win rates near 25%. Partial automation and unrefined targeting delay deals, leaving significant revenue opportunities untapped.</p>
-            <p><strong>Actions with Top Tools:</strong></p>
+        ;
+    } else if (totalScore <= 30) {
+        readinessLevel = 'Moderate Readiness';
+        document.getElementById('readiness-level').style.color = 'var(--warning-color)';
+        
+        detailedSummary = 
+            <h3>Assessment: Moderate AI Readiness</h3>
+            <p>Your organization has established some foundations for AI implementation. You have systems in place but need to optimize them for AI-powered revenue acceleration.</p>
+            
+            <h3>Actions with Tools:</h3>
             <ul>
-                <li><em>ICP Refinement:</em> Use Clay.com ($149/month) to analyze customer patterns, then auto-update ICP lists with Make.com ($9/month)—double pipeline velocity and boost conversions 22% in 60 days.</li>
-                <li><em>Content Automation:</em> Generate icebreakers with Warmer.ai ($97/month), triggering delivery with Make.com based on buyer stage—shorten closes by 18% (e.g., 60 to 49 days) in 30 days.</li>
-                <li><em>Handoff Speed:</em> Automate routing with Sybill.ai ($59/month) and log delays with n8n ($20/month)—reduce handoff time by 40% and lift close rates by 15% in 6 weeks.</li>
+                <li>Implement <em>advanced lead scoring</em> using machine learning algorithms.</li>
+                <li>Adopt <em>conversation intelligence</em> tools to analyze sales calls and provide coaching insights.</li>
+                <li>Integrate <em>predictive analytics</em> into your forecasting process.</li>
+                <li>Deploy <em>intent data tools</em> to identify prospects actively researching solutions like yours.</li>
+                <li>Implement <em>AI-driven content recommendations</em> for your sales team.</li>
             </ul>
-            <p><strong>Payoff:</strong></p>
+            
+            <h3>Payoff:</h3>
+            <p>These mid-level AI implementations can deliver significant results:</p>
             <ul>
-                <li>Organizations shortened cycles from 60 to 45 days (+25% faster velocity).</li>
-                <li>Win rates rose from 25% to 32% (+28% improvement).</li>
-                <li>Pipeline revenue jumped 22% in 4 months (Gartner, 2024).</li>
+                <li>30-40% increase in qualified pipeline opportunities</li>
+                <li>25% reduction in sales cycle length</li>
+                <li>20% improvement in forecast accuracy</li>
             </ul>
-            <p><strong>Why AI Matters:</strong></p>
+            
+            <h3>Why AI Matters:</h3>
             <ul>
-                <li>Cost-effective AI tools reduce delays by 40% and drive 20% larger wins with minimal effort.</li>
+                <li>B2B companies using AI for sales enablement report <strong>up to 30% higher close rates</strong> (Forrester)</li>
+                <li>Sales teams using AI spend <strong>40% less time on administrative tasks</strong> and more time selling (Salesforce)</li>
             </ul>
-        `;
+        ;
     } else {
         readinessLevel = 'High Readiness';
-        detailedSummary = `
-            <h3>High Readiness – Optimize for Market Leadership</h3>
-            <p><strong>Assessment:</strong> With sales cycles around 50 days and win rates near 30%, your process is strong—but suboptimal personalization and manual prep work are capping your potential. Further refinement will position you ahead of competitors and maximize revenue velocity.</p>
-            <p><strong>Actions with Top Tools:</strong></p>
+        document.getElementById('readiness-level').style.color = 'var(--success-color)';
+        
+        detailedSummary = 
+            <h3>Assessment: High AI Readiness</h3>
+            <p>Your organization is well-positioned to leverage advanced AI capabilities. You have mature systems and processes that can be enhanced with cutting-edge AI technologies.</p>
+            
+            <h3>Actions with Tools:</h3>
             <ul>
-                <li><em>ABM Precision:</em> Enrich ABM targets with Clay.com ($149/month), orchestrate campaigns with Make.com ($9/month), and personalize with n8n + LLM—grow deal sizes by 35% (e.g., $150K to $202K) in 6 months.</li>
-                <li><em>Pre-Meeting Edge:</em> Compile briefs with Humanlinker ($75/month) and Sybill.ai ($59/month), automated via Make.com—improve win rates by 20% (e.g., 30% to 36%) in 90 days.</li>
-                <li><em>Tech Power:</em> Scale email with Smartlead.ai ($39/month) and automate tasks with Bardeen.ai ($10/month)—reduce cycles by 45% (e.g., 50 to 27 days) and boost revenue by 30% in 4 months.</li>
+                <li>Implement <em>generative AI</em> for personalized outreach at scale.</li>
+                <li>Deploy <em>real-time opportunity coaching</em> using AI during customer interactions.</li>
+                <li>Utilize <em>advanced buyer intent signals</em> with predictive account prioritization.</li>
+                <li>Implement <em>AI-driven dynamic pricing</em> based on customer value and win probability.</li>
+                <li>Create <em>digital sales rooms</em> with AI-powered content recommendations and buyer engagement tracking.</li>
             </ul>
-            <p><strong>Payoff:</strong></p>
+            
+            <h3>Payoff:</h3>
+            <p>These advanced AI implementations can transform your revenue operations:</p>
             <ul>
-                <li>Organizations shortened cycles from 50 to 30 days (+40% faster velocity).</li>
-                <li>Win rates improved from 30% to 40% (+33% improvement).</li>
-                <li>Revenue grew by 35% in 6 months (HubSpot, 2024).</li>
+                <li>50%+ increase in sales productivity</li>
+                <li>35% higher win rates on competitive deals</li>
+                <li>25-30% increase in average deal size</li>
             </ul>
-            <p><strong>Why AI Matters:</strong></p>
+            
+            <h3>Why AI Matters:</h3>
             <ul>
-                <li>Precision AI tools transform your sales engine—delivering faster cycles and larger wins for under $200/month.</li>
+                <li>Organizations with mature AI implementations achieve <strong>3-15% revenue increase</strong> across the entire customer lifecycle (McKinsey)</li>
+                <li>AI-powered sales organizations are <strong>2.8x more likely to be growing 30%+ annually</strong> compared to peers (Aberdeen)</li>
             </ul>
-        `;
+        ;
     }
     
-    // Show results section
-    document.getElementById('results').innerHTML = `
-        <div class="results-section">
-            <h2>Your AI Revenue Acceleration Readiness Score</h2>
-            <div class="results-container">
-                <div class="score-display">
-                    <div class="final-score">${totalScore}</div>
-                    <p>out of ${maxPossibleScore}</p>
-                    <div class="score-status">${readinessLevel}</div>
-                </div>
-                <div class="score-interpretation">
-                    <h4>${readinessLevel} (${averageScore.toFixed(1)}/5.0)</h4>
-                    <p>Your organization is at the <strong>${readinessLevel}</strong> stage in terms of AI revenue acceleration capabilities.</p>
-                    ${detailedSummary}
-                </div>
-            </div>
-            <div class="cta-container">
-                <h4>Ready to accelerate your revenue with AI?</h4>
-                <p>Our team of experts can help you implement the recommended tools and strategies to improve your score and drive faster revenue growth.</p>
-                <a href="mailto:contact@example.com" class="cta-button">Contact Us</a>
-            </div>
-        </div>
-    `;
+    document.getElementById('readiness-level').textContent = readinessLevel;
+    document.getElementById('detailed-summary').innerHTML = detailedSummary;
     
     // Show the results section
-    document.getElementById('results').classList.add('active');
+    document.getElementById('results').style.display = 'block';
     
-    // Maintain scroll position
-    window.scrollTo({
-        top: currentScrollY,
-        behavior: 'auto'
-    });
+    // Scroll to the results section
+    document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
 }
 
-// Execute when the page loads
+// Initialize the form when the DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("Page loaded - DOM Content Loaded Event");
-    
-    // Make sure section1 is visible and others are hidden
-    document.querySelectorAll('.audit-section').forEach(section => {
-        section.classList.remove('active');
-    });
-    
-    // Check if there's a hash in the URL
-    if (window.location.hash && window.location.hash.startsWith('#section')) {
-        handleHashChange();
-    } else {
-        // Default to section1 if no hash
-        document.getElementById('section1').classList.add('active');
-    }
-    
-    // Add event listener for hash changes
-    window.addEventListener('hashchange', handleHashChange);
-    
-    // Set default values for the visible section
-    const visibleSection = document.querySelector('.audit-section.active');
-    if (visibleSection) {
-        setDefaultValuesForSection(visibleSection.id);
-    }
-    
-    // Add click handlers for all rating items
+    // Add click event listeners to all rating items
     document.querySelectorAll('.rating-item').forEach(item => {
         item.addEventListener('click', function() {
             selectRating(this);
         });
     });
     
-    // Direct targeting of the first next button
-    const firstNextButton = document.querySelector('#section1 .btn-next');
-    if (firstNextButton) {
-        console.log("Found first next button:", firstNextButton);
-        firstNextButton.addEventListener('click', handleNavigationButtonClick);
-    } else {
-        console.error("Could not find the first next button!");
+    // Add click event listeners to navigation buttons
+    document.querySelectorAll('.nav-button').forEach(button => {
+        button.addEventListener('click', function() {
+            const currentSectionId = this.closest('.audit-section').id;
+            const action = this.getAttribute('data-action');
+            
+            let nextSectionId;
+            if (action === 'next') {
+                const currentSectionNumber = parseInt(currentSectionId.replace('section', ''));
+                nextSectionId = 'section' + (currentSectionNumber + 1);
+            } else if (action === 'prev') {
+                const currentSectionNumber = parseInt(currentSectionId.replace('section', ''));
+                nextSectionId = 'section' + (currentSectionNumber - 1);
+            } else if (action === 'submit') {
+                // Calculate and display the score
+                calculateScore();
+                return;
+            }
+            
+            navigateSection(currentSectionId, nextSectionId);
+            
+            // Update progress bar
+            updateProgress();
+        });
+    });
+    
+    // Initialize progress bar
+    updateProgress();
+    
+    // Add hash change listener
+    window.addEventListener('hashchange', handleHashChange);
+    
+    // Check if there's a hash in the URL on page load
+    if (window.location.hash) {
+        handleHashChange();
     }
-    
-    // Add click handlers for navigation buttons
-    console.log("Setting up navigation button handlers");
-    const nextButtons = document.querySelectorAll('.btn-next');
-    console.log("Found next buttons:", nextButtons.length);
-    
-    nextButtons.forEach(button => {
-        console.log("Adding click handler to button:", button);
-        button.addEventListener('click', handleNavigationButtonClick);
-    });
-    
-    document.querySelectorAll('.btn-prev').forEach(button => {
-        button.addEventListener('click', handleNavigationButtonClick);
-    });
-    
-    document.querySelectorAll('.btn-calculate').forEach(button => {
-        button.addEventListener('click', calculateScore);
-    });
 });
+
+// Function to update progress bar
+function updateProgress() {
+    const totalSections = document.querySelectorAll('.audit-section').length;
+    const activeSectionId = document.querySelector('.audit-section.active').id;
+    const currentSectionNumber = parseInt(activeSectionId.replace('section', ''));
+    
+    const progressPercentage = (currentSectionNumber / totalSections) * 100;
+    
+    document.getElementById('progressBar').style.width = progressPercentage + '%';
+    document.querySelector('.progress-text').textContent = Math.round(progressPercentage) + '% Complete';
+    
+    // Count total questions and answered questions
+    const totalQuestions = document.querySelectorAll('.rating').length;
+    const answeredQuestions = document.querySelectorAll('.rating-item.selected, .rating-item.default-selected').length;
+    
+    document.querySelector('.questions-count').textContent = answeredQuestions + '/' + totalQuestions + ' Questions';
+}
