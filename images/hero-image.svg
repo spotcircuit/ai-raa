@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400" fill="none">
+  <g clip-path="url(#clip0_1_2)">
+    <path d="M450 200C450 255.228 405.228 300 350 300C294.772 300 250 255.228 250 200C250 144.772 294.772 100 350 100C405.228 100 450 144.772 450 200Z" fill="#F72585" fill-opacity="0.1"/>
+    <path d="M500 200C500 282.843 433.137 350 350 350C266.863 350 200 282.843 200 200C200 117.157 266.863 50 350 50C433.137 50 500 117.157 500 200Z" stroke="#F72585" stroke-width="2" stroke-dasharray="4 4"/>
+    <path d="M400 200C400 227.614 377.614 250 350 250C322.386 250 300 227.614 300 200C300 172.386 322.386 150 350 150C377.614 150 400 172.386 400 200Z" fill="#4361EE" fill-opacity="0.2"/>
+    <rect x="100" y="100" width="150" height="200" rx="10" fill="white" stroke="#4361EE" stroke-width="2"/>
+    <rect x="120" y="130" width="110" height="10" rx="5" fill="#E9ECEF"/>
+    <rect x="120" y="150" width="110" height="10" rx="5" fill="#E9ECEF"/>
+    <rect x="120" y="170" width="80" height="10" rx="5" fill="#E9ECEF"/>
+    <rect x="120" y="200" width="110" height="10" rx="5" fill="#E9ECEF"/>
+    <rect x="120" y="220" width="110" height="10" rx="5" fill="#E9ECEF"/>
+    <rect x="120" y="240" width="80" height="10" rx="5" fill="#E9ECEF"/>
+    <circle cx="150" cy="280" r="20" fill="#4361EE"/>
+    <path d="M145 280L150 285L155 280" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M150 275V285" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="350" y="150" width="150" height="100" rx="10" fill="white" stroke="#4361EE" stroke-width="2"/>
+    <rect x="370" y="170" width="110" height="10" rx="5" fill="#E9ECEF"/>
+    <rect x="370" y="190" width="110" height="10" rx="5" fill="#E9ECEF"/>
+    <rect x="370" y="210" width="80" height="10" rx="5" fill="#E9ECEF"/>
+    <path d="M175 100L175 50L225 50" stroke="#7209B7" stroke-width="2" stroke-dasharray="4 4"/>
+    <path d="M425 150L425 100L375 100" stroke="#7209B7" stroke-width="2" stroke-dasharray="4 4"/>
+    <path d="M425 250L425 300L375 300" stroke="#7209B7" stroke-width="2" stroke-dasharray="4 4"/>
+    <circle cx="175" cy="50" r="5" fill="#7209B7"/>
+    <circle cx="425" cy="100" r="5" fill="#7209B7"/>
+    <circle cx="425" cy="300" r="5" fill="#7209B7"/>
+    <path d="M150 50L100 50L100 100" stroke="#F72585" stroke-width="2" stroke-dasharray="4 4"/>
+    <path d="M450 100L500 100L500 150" stroke="#F72585" stroke-width="2" stroke-dasharray="4 4"/>
+    <path d="M450 300L500 300L500 250" stroke="#F72585" stroke-width="2" stroke-dasharray="4 4"/>
+    <circle cx="100" cy="50" r="5" fill="#F72585"/>
+    <circle cx="500" cy="100" r="5" fill="#F72585"/>
+    <circle cx="500" cy="300" r="5" fill="#F72585"/>
+    <path d="M200 200L250 200" stroke="#4361EE" stroke-width="2" stroke-dasharray="4 4"/>
+    <path d="M450 200L500 200" stroke="#4361EE" stroke-width="2" stroke-dasharray="4 4"/>
+    <circle cx="250" cy="200" r="5" fill="#4361EE"/>
+    <circle cx="450" cy="200" r="5" fill="#4361EE"/>
+    <rect x="320" y="180" width="60" height="40" rx="5" fill="#4361EE"/>
+    <path d="M335 200L345 205L335 210V200Z" fill="white"/>
+    <path d="M355 200H365" stroke="white" stroke-width="2" stroke-linecap="round"/>
+    <path d="M355 205H365" stroke="white" stroke-width="2" stroke-linecap="round"/>
+    <path d="M355 210H365" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_1_2">
+      <rect width="600" height="400" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>

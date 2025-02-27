@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Revenue Acceleration Audit - Simple Version</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .section {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+        #section1 {
+            display: block;
+        }
+        .btn {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .rating {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .rating-item {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        .selected {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>AI Revenue Acceleration Audit</h1>
+    <p>A simple version to ensure navigation works</p>
+
+    <!-- Section 1 -->
+    <div id="section1" class="section">
+        <h2>Section 1: Data for Deals</h2>
+        <p>Question 1: Is your CRM data clean?</p>
+        <div class="rating" data-question="q1">
+            <div class="rating-item" onclick="this.parentNode.querySelectorAll('.rating-item').forEach(i => i.classList.remove('selected')); this.classList.add('selected');">1</div>
+            <div class="rating-item" onclick="this.parentNode.querySelectorAll('.rating-item').forEach(i => i.classList.remove('selected')); this.classList.add('selected');">2</div>
+            <div class="rating-item" onclick="this.parentNode.querySelectorAll('.rating-item').forEach(i => i.classList.remove('selected')); this.classList.add('selected');">3</div>
+            <div class="rating-item" onclick="this.parentNode.querySelectorAll('.rating-item').forEach(i => i.classList.remove('selected')); this.classList.add('selected');">4</div>
+            <div class="rating-item" onclick="this.parentNode.querySelectorAll('.rating-item').forEach(i => i.classList.remove('selected')); this.classList.add('selected');">5</div>
+        </div>
+        <button class="btn" onclick="document.getElementById('section1').style.display='none'; document.getElementById('section2').style.display='block';">Next Section</button>
+    </div>
+
+    <!-- Section 2 -->
+    <div id="section2" class="section">
+        <h2>Section 2: Intent to Revenue</h2>
+        <p>Question 1: Can you spot buying signals?</p>
+        <div class="rating" data-question="q2">
+            <div class="rating-item" onclick="this.parentNode.querySelectorAll('.rating-item').forEach(i => i.classList.remove('selected')); this.classList.add('selected');">1</div>
+            <div class="rating-item" onclick="this.parentNode.querySelectorAll('.rating-item').forEach(i => i.classList.remove('selected')); this.classList.add('selected');">2</div>
+            <div class="rating-item" onclick="this.parentNode.querySelectorAll('.rating-item').forEach(i => i.classList.remove('selected')); this.classList.add('selected');">3</div>
+            <div class="rating-item" onclick="this.parentNode.querySelectorAll('.rating-item').forEach(i => i.classList.remove('selected')); this.classList.add('selected');">4</div>
+            <div class="rating-item" onclick="this.parentNode.querySelectorAll('.rating-item').forEach(i => i.classList.remove('selected')); this.classList.add('selected');">5</div>
+        </div>
+        <div>
+            <button class="btn" onclick="document.getElementById('section2').style.display='none'; document.getElementById('section1').style.display='block';">Previous</button>
+            <button class="btn" onclick="document.getElementById('section2').style.display='none'; document.getElementById('section3').style.display='block';">Next Section</button>
+        </div>
+    </div>
+
+    <!-- Section 3 (Results) -->
+    <div id="section3" class="section">
+        <h2>Results</h2>
+        <p>This is the results section.</p>
+        <div>
+            <button class="btn" onclick="document.getElementById('section3').style.display='none'; document.getElementById('section2').style.display='block';">Previous</button>
+        </div>
+    </div>
+
+    <script>
+        // This is just a simple script to verify that JavaScript is running
+        console.log("Simple test page loaded");
+    </script>
+</body>
+</html>

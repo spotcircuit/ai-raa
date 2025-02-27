@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .section {
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            display: none;
+        }
+        #section1 {
+            display: block;
+            background-color: #f0f0f0;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4361ee;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Navigation Test</h1>
+    
+    <div class="section" id="section1">
+        <h2>Section 1</h2>
+        <p>This is the first section content.</p>
+        <button type="button" class="btn-next" data-next="section2">Next Section</button>
+    </div>
+    
+    <div class="section" id="section2">
+        <h2>Section 2</h2>
+        <p>This is the second section content.</p>
+        <button type="button" class="btn-prev" data-prev="section1">Previous Section</button>
+        <button type="button" class="btn-next" data-next="section3">Next Section</button>
+    </div>
+    
+    <div class="section" id="section3">
+        <h2>Section 3</h2>
+        <p>This is the third section content.</p>
+        <button type="button" class="btn-prev" data-prev="section2">Previous Section</button>
+    </div>
+    
+    <script>
+        // Simple navigation function
+        function navigateSection(currentId, nextId) {
+            console.log("Navigating from", currentId, "to", nextId);
+            
+            // Get the current and next section elements
+            const currentSection = document.getElementById(currentId);
+            const nextSection = document.getElementById(nextId);
+            
+            if (!currentSection || !nextSection) {
+                console.error("Section not found:", !currentSection ? currentId : nextId);
+                return;
+            }
+            
+            // Hide current section
+            currentSection.style.display = 'none';
+            
+            // Show next section
+            nextSection.style.display = 'block';
+        }
+        
+        // Add event listeners when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("Page loaded");
+            
+            // Add click handlers for next buttons
+            document.querySelectorAll('.btn-next').forEach(button => {
+                button.addEventListener('click', function() {
+                    console.log("Next button clicked");
+                    const currentSection = this.closest('.section').id;
+                    const nextSection = this.getAttribute('data-next');
+                    navigateSection(currentSection, nextSection);
+                });
+            });
+            
+            // Add click handlers for previous buttons
+            document.querySelectorAll('.btn-prev').forEach(button => {
+                button.addEventListener('click', function() {
+                    console.log("Previous button clicked");
+                    const currentSection = this.closest('.section').id;
+                    const prevSection = this.getAttribute('data-prev');
+                    navigateSection(currentSection, prevSection);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Revenue Acceleration Audit | SpotCircuit</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="smooth-scroll.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Assess how ready your revenue engine (sales + marketing) is to use AI to shorten sales cycles and close more deals.">
+    <meta property="og:title" content="AI Revenue Acceleration Audit">
+    <meta property="og:description" content="A self-assessment for B2B Tech CROs to evaluate AI readiness">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>SpotCircuit</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about-header">About</a></li>
+                    <li><a href="#audit-header">Audit</a></li>
+                    <li><a href="#results">Results</a></li>
+                    <li><a href="#contact-header" class="btn-primary">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-pattern"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>AI Revenue Acceleration Audit</h1>
+                <h2>A Self-Assessment for B2B Tech CROs</h2>
+                <p>Assess how ready your revenue engine (sales + marketing) is to use AI to shorten sales cycles and close more deals.</p>
+                <a href="#audit-header" class="btn-primary">Start Your Assessment <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="hero-image">
+                <img src="images/hero-image.svg" alt="AI Revenue Acceleration">
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="about-header">About the Assessment</h2>
+                <p>Score each question (1-5) using the key below, then we tally your total. Focus: Fast, proven AI wins.</p>
+            </div>
+            <div class="scoring-key">
+                <h3>Scoring Key:</h3>
+                <div class="score-cards">
+                    <div class="score-card" style="--i: 0">
+                        <div class="score">1</div>
+                        <h4>Not Started</h4>
+                        <p>No capability—losing deals and time.</p>
+                    </div>
+                    <div class="score-card" style="--i: 1">
+                        <div class="score">2</div>
+                        <h4>Basic</h4>
+                        <p>Minimal efforts, inconsistent revenue impact.</p>
+                    </div>
+                    <div class="score-card" style="--i: 2">
+                        <div class="score">3</div>
+                        <h4>Developing</h4>
+                        <p>Process exists, but not optimized for speed or wins.</p>
+                    </div>
+                    <div class="score-card" style="--i: 3">
+                        <div class="score">4</div>
+                        <h4>Strong</h4>
+                        <p>Solid execution, driving some revenue lift.</p>
+                    </div>
+                    <div class="score-card" style="--i: 4">
+                        <div class="score">5</div>
+                        <h4>Fully Optimized</h4>
+                        <p>Best-in-class, maximizing deal velocity and close rates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="audit" class="audit">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="audit-header">Start Your Assessment</h2>
+                <p>Complete all sections to receive your personalized AI Revenue Acceleration score.</p>
+            </div>
+            <form id="auditForm">
+                <div class="progress-bar-container">
+                    <div class="progress-bar">
+                        <div class="progress" id="progressBar"></div>
+                    </div>
+                    <div class="progress-stats">
+                        <div class="progress-text">0% Complete</div>
+                        <div class="questions-count">0/16 Questions</div>
+                    </div>
+                </div>
+
+                <!-- Section 1: Data for Deals -->
+                <div class="audit-section active" id="section1">
+                    <div class="section-header">
+                        <div class="section-number">1</div>
+                        <div class="section-title">
+                            <h3 id="section1-header">Data for Deals</h3>
+                            <p>Getting the right data in place is the foundation for targeting high‐value accounts quickly. AI speeds up data cleanup and enrichment, slashing qualification time to close deals faster.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <h4>Question 1: Is your CRM data clean and centralized enough to pinpoint high-potential accounts fast?</h4>
+                        <p class="example"><i class="fas fa-lightbulb"></i> Example: 1 = Siloed, outdated; 3 = Centralized but messy; 5 = Unified, actionable daily.</p>
+                        <p class="why-matters"><i class="fas fa-chart-line"></i> Why It Matters: Clean data cuts lead qualification time by 30% (SiriusDecisions).</p>
+                        <div class="rating" data-question="dataDealsQ1">
+                            <div class="rating-item" data-value="1">1</div>
+                            <div class="rating-item" data-value="2">2</div>
+                            <div class="rating-item" data-value="3">3</div>
+                            <div class="rating-item" data-value="4">4</div>
+                            <div class="rating-item" data-value="5">5</div>
+                        </div>
+                        <div class="rating-labels">
+                            <span>Not Started</span>
+                            <span>Fully Optimized</span>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <h4>Question 2: Can you enrich account data (e.g., firmographics, revenue) without breaking the bank?</h4>
+                        <p class="example"><i class="fas fa-lightbulb"></i> Example: 1 = No enrichment; 3 = Manual updates; 5 = Auto-enriched via tools like ZoomInfo.</p>
+                        <p class="why-matters"><i class="fas fa-chart-line"></i> Why It Matters: Enriched data boosts targeting precision—15% more conversions (Forrester).</p>
+                        <div class="rating" data-question="dataDealsQ2">
+                            <div class="rating-item" data-value="1">1</div>
+                            <div class="rating-item" data-value="2">2</div>
+                            <div class="rating-item" data-value="3">3</div>
+                            <div class="rating-item" data-value="4">4</div>
+                            <div class="rating-item" data-value="5">5</div>
+                        </div>
+                        <div class="rating-labels">
+                            <span>Not Started</span>
+                            <span>Fully Optimized</span>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-buttons">
+                        <a href="#section2-header" class="btn-next" data-next="section2" onclick="setDefaultValuesForSection('section1'); return true;">Next Section <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Section 2: Intent to Revenue -->
+                <div class="audit-section" id="section2">
+                    <div class="section-header">
+                        <div class="section-number">2</div>
+                        <div class="section-title">
+                            <h3 id="section2-header">Intent to Revenue</h3>
+                            <p>Spotting buying signals and prioritizing hot leads is key to accelerating pipeline movement. AI automates intent tracking and scoring, ensuring reps focus on deals ready to close now.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <h4>Question 3: Can you spot accounts showing buying signals (e.g., website visits, downloads) across channels?</h4>
+                        <p class="example"><i class="fas fa-lightbulb"></i> Example: 1 = No tracking; 3 = Some manual tracking; 5 = Automated via tools like HubSpot.</p>
+                        <p class="why-matters"><i class="fas fa-chart-line"></i> Why It Matters: Intent data lifts close rates by 20% (Aberdeen).</p>
+                        <div class="rating" data-question="intentRevQ1">
+                            <div class="rating-item" data-value="1">1</div>
+                            <div class="rating-item" data-value="2">2</div>
+                            <div class="rating-item" data-value="3">3</div>
+                            <div class="rating-item" data-value="4">4</div>
+                            <div class="rating-item" data-value="5">5</div>
+                        </div>
+                        <div class="rating-labels">
+                            <span>Not Started</span>
+                            <span>Fully Optimized</span>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <h4>Question 4: Do you prioritize leads/accounts with predictive scoring tied to past deal wins?</h4>
+                        <p class="example"><i class="fas fa-lightbulb"></i> Example: 1 = No scoring; 3 = Basic rules; 5 = Predictive, using CRM data.</p>
+                        <p class="why-matters"><i class="fas fa-chart-line"></i> Why It Matters: Predictive scoring doubles pipeline velocity (Salesforce study).</p>
+                        <div class="rating" data-question="intentRevQ2">
+                            <div class="rating-item" data-value="1">1</div>
+                            <div class="rating-item" data-value="2">2</div>
+                            <div class="rating-item" data-value="3">3</div>
+                            <div class="rating-item" data-value="4">4</div>
+                            <div class="rating-item" data-value="5">5</div>
+                        </div>
+                        <div class="rating-labels">
+                            <span>Not Started</span>
+                            <span>Fully Optimized</span>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-buttons">
+                        <a href="#section1-header" class="btn-prev" data-prev="section1"><i class="fas fa-arrow-left"></i> Previous</a>
+                        <a href="#section3-header" class="btn-next" data-next="section3" onclick="setDefaultValuesForSection('section2'); return true;">Next Section <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Section 3: ICP Precision -->
+                <div class="audit-section" id="section3">
+                    <div class="section-header">
+                        <div class="section-number">3</div>
+                        <div class="section-title">
+                            <h3 id="section3-header">ICP Precision</h3>
+                            <p>Defining your Ideal Customer Profile (ICP) ensures you pursue the right deals from the start. AI sharpens ICPs with data and insights, reducing wasted time and boosting win rates fast.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <h4>Question 5: Have you built an Ideal Customer Profile (ICP) using internal customer data (e.g., past wins, revenue)?</h4>
+                        <p class="example"><i class="fas fa-lightbulb"></i> Example: 1 = No ICP; 3 = Rough profile, manual; 5 = Data-driven ICP from CRM analytics.</p>
+                        <p class="why-matters"><i class="fas fa-chart-line"></i> Why It Matters: A solid ICP boosts win rates by 25% by targeting the right accounts (HubSpot).</p>
+                        <div class="rating" data-question="icpQ1">
+                            <div class="rating-item" data-value="1">1</div>
+                            <div class="rating-item" data-value="2">2</div>
+                            <div class="rating-item" data-value="3">3</div>
+                            <div class="rating-item" data-value="4">4</div>
+                            <div class="rating-item" data-value="5">5</div>
+                        </div>
+                        <div class="rating-labels">
+                            <span>Not Started</span>
+                            <span>Fully Optimized</span>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <h4>Question 6: Have you used LLMs like ChatGPT, Perplexity, or Grok 3 to conduct persona research using LLM models and web data?</h4>
+                        <p class="example"><i class="fas fa-lightbulb"></i> Example: 1 = No LLM use; 3 = Basic manual research; 5 = LLMs pull web insights for personas.</p>
+                        <p class="why-matters"><i class="fas fa-chart-line"></i> Why It Matters: LLM-enhanced personas lift deal sizes by 20% with deeper buyer insights (Gartner).</p>
+                        <div class="rating" data-question="icpQ2">
+                            <div class="rating-item" data-value="1">1</div>
+                            <div class="rating-item" data-value="2">2</div>
+                            <div class="rating-item" data-value="3">3</div>
+                            <div class="rating-item" data-value="4">4</div>
+                            <div class="rating-item" data-value="5">5</div>
+                        </div>
+                        <div class="rating-labels">
+                            <span>Not Started</span>
+                            <span>Fully Optimized</span>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-buttons">
+                        <a href="#section2-header" class="btn-prev" data-prev="section2"><i class="fas fa-arrow-left"></i> Previous</a>
+                        <a href="#section4-header" class="btn-next" data-next="section4" onclick="setDefaultValuesForSection('section3'); return true;">Next Section <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Section 4: Pipeline-Relevant Content -->
+                <div class="audit-section" id="section4">
+                    <div class="section-header">
+                        <div class="section-number">4</div>
+                        <div class="section-title">
+                            <h3 id="section4-header">Pipeline-Relevant Content</h3>
+                            <p>Content that's ready and aligned keeps sales moving through the buyer's journey. AI optimizes content delivery, reducing prep time and accelerating deal closures.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <h4>Question 7: Is your content library organized to arm sales with deal-closing assets?</h4>
+                        <p class="example"><i class="fas fa-lightbulb"></i> Example: 1 = Scattered files; 3 = Organized but static; 5 = Tagged, sales-ready library.</p>
+                        <p class="why-matters"><i class="fas fa-chart-line"></i> Why It Matters: Accessible content cuts sales prep time by 25% (CSO Insights).</p>
+                        <div class="rating" data-question="contentQ1">
+                            <div class="rating-item" data-value="1">1</div>
+                            <div class="rating-item" data-value="2">2</div>
+                            <div class="rating-item" data-value="3">3</div>
+                            <div class="rating-item" data-value="4">4</div>
+                            <div class="rating-item" data-value="5">5</div>
+                        </div>
+                        <div class="rating-labels">
+                            <span>Not Started</span>
+                            <span>Fully Optimized</span>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <h4>Question 8: Do you have content for each buyer's journey stage (awareness, consideration, decision) that speeds deals?</h4>
+                        <p class="example"><i class="fas fa-lightbulb"></i> Example: 1 = No mapping; 3 = Some stage coverage; 5 = Journey-aligned, proven to convert.</p>
+                        <p class="why-matters"><i class="fas fa-chart-line"></i> Why It Matters: Journey-aligned content shortens sales cycles by 18% (Gartner).</p>
+                        <div class="rating" data-question="contentQ2">
+                            <div class="rating-item" data-value="1">1</div>
+                            <div class="rating-item" data-value="2">2</div>
+                            <div class="rating-item" data-value="3">3</div>
+                            <div class="rating-item" data-value="4">4</div>
+                            <div class="rating-item" data-value="5">5</div>
+                        </div>
+                        <div class="rating-labels">
+                            <span>Not Started</span>
+                            <span>Fully Optimized</span>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-buttons">
+                        <a href="#section3-header" class="btn-prev" data-prev="section3"><i class="fas fa-arrow-left"></i> Previous</a>
+                        <a href="#section5-header" class="btn-next" data-next="section5" onclick="setDefaultValuesForSection('section4'); return true;">Next Section <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Section 5: Lead-to-Deal Flow -->
+                <div class="audit-section" id="section5">
+                    <div class="section-header">
+                        <div class="section-number">5</div>
+                        <div class="section-title">
+                            <h3 id="section5-header">Lead-to-Deal Flow</h3>
+                            <p>Smooth handoffs and velocity tracking turn leads into revenue without delays. AI automates transitions and identifies bottlenecks, shortening cycles and increasing wins.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <h4>Question 9: Can you automate lead handoffs to sales based on engagement triggers?</h4>
+                        <p class="example"><i class="fas fa-lightbulb"></i> Example: 1 = Manual handoffs; 3 = Basic automation; 5 = Trigger-based (e.g., Marketo).</p>
+                        <p class="why-matters"><i class="fas fa-chart-line"></i> Why It Matters: Automation reduces handoff delays by 40% (HubSpot data).</p>
+                        <div class="rating" data-question="flowQ1">
+                            <div class="rating-item" data-value="1">1</div>
+                            <div class="rating-item" data-value="2">2</div>
+                            <div class="rating-item" data-value="3">3</div>
+                            <div class="rating-item" data-value="4">4</div>
+                            <div class="rating-item" data-value="5">5</div>
+                        </div>
+                        <div class="rating-labels">
+                            <span>Not Started</span>
+                            <span>Fully Optimized</span>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <h4>Question 10: Do you track pipeline velocity (e.g., time to close) to spot bottlenecks?</h4>
+                        <p class="example"><i class="fas fa-lightbulb"></i> Example: 1 = No tracking; 3 = Basic metrics; 5 = Detailed velocity KPIs in CRM.</p>
+                        <p class="why-matters"><i class="fas fa-chart-line"></i> Why It Matters: Velocity tracking lifts close rates by 15% (Velocify).</p>
+                        <div class="rating" data-question="flowQ2">
+                            <div class="rating-item" data-value="1">1</div>
+                            <div class="rating-item" data-value="2">2</div>
+                            <div class="rating-item" data-value="3">3</div>
+                            <div class="rating-item" data-value="4">4</div>
+                            <div class="rating-item" data-value="5">5</div>
+                        </div>
+                        <div class="rating-labels">
+                            <span>Not Started</span>
+                            <span>Fully Optimized</span>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-buttons">
+                        <a href="#section4-header" class="btn-prev" data-prev="section4"><i class="fas fa-arrow-left"></i> Previous</a>
+                        <a href="#section6-header" class="btn-next" data-next="section6" onclick="setDefaultValuesForSection('section5'); return true;">Next Section <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Section 6: ABM for Revenue -->
+                <div class="audit-section" id="section6">
+                    <div class="section-header">
+                        <div class="section-number">6</div>
+                        <div class="section-title">
+                            <h3 id="section6-header">ABM for Revenue</h3>
+                            <p>ABM targets high-value accounts with precision to maximize deal size and speed. AI scales personalization and metrics, driving larger wins in less time.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <h4>Question 11: Can you automate personalized outreach to your top 20 accounts using current tools?</h4>
+                        <p class="example"><i class="fas fa-lightbulb"></i> Example: 1 = Manual emails; 3 = Basic sequences; 5 = Multi-channel automation (e.g., Outreach).</p>
+                        <p class="why-matters"><i class="fas fa-chart-line"></i> Why It Matters: ABM automation boosts deal size by 20% (TOPO).</p>
+                        <div class="rating" data-question="abmQ1">
+                            <div class="rating-item" data-value="1">1</div>
+                            <div class="rating-item" data-value="2">2</div>
+                            <div class="rating-item" data-value="3">3</div>
+                            <div class="rating-item" data-value="4">4</div>
+                            <div class="rating-item" data-value="5">5</div>
+                        </div>
+                        <div class="rating-labels">
+                            <span>Not Started</span>
+                            <span>Fully Optimized</span>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <h4>Question 12: Do you measure ABM success with revenue metrics (e.g., pipeline contribution, win rate)?</h4>
+                        <p class="example"><i class="fas fa-lightbulb"></i> Example: 1 = Vanity metrics only; 3 = Some revenue tracking; 5 = Full revenue attribution.</p>
+                        <p class="why-matters"><i class="fas fa-chart-line"></i> Why It Matters: Revenue-focused ABM doubles ROI (ITSMA).</p>
+                        <div class="rating" data-question="abmQ2">
+                            <div class="rating-item" data-value="1">1</div>
+                            <div class="rating-item" data-value="2">2</div>
+                            <div class="rating-item" data-value="3">3</div>
+                            <div class="rating-item" data-value="4">4</div>
+                            <div class="rating-item" data-value="5">5</div>
+                        </div>
+                        <div class="rating-labels">
+                            <span>Not Started</span>
+                            <span>Fully Optimized</span>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-buttons">
+                        <a href="#section5-header" class="btn-prev" data-prev="section5"><i class="fas fa-arrow-left"></i> Previous</a>
+                        <a href="#section7-header" class="btn-next" data-next="section7" onclick="setDefaultValuesForSection('section6'); return true;">Next Section <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Section 7: Tech That Sells -->
+                <div class="audit-section" id="section7">
+                    <div class="section-header">
+                        <div class="section-number">7</div>
+                        <div class="section-title">
+                            <h3 id="section7-header">Tech That Sells</h3>
+                            <p>A stack that prioritizes revenue tasks is the backbone of fast sales cycles. AI integrations and automation reduce manual work, enabling reps to close more deals quickly.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <h4>Question 13: Does your stack (CRM, MAP) integrate to prioritize revenue-generating activities?</h4>
+                        <p class="example"><i class="fas fa-lightbulb"></i> Example: 1 = Disconnected tools; 3 = Partial integration; 5 = Seamless, AI-ready stack.</p>
+                        <p class="why-matters"><i class="fas fa-chart-line"></i> Why It Matters: Integrated stacks lift productivity by 30% (McKinsey).</p>
+                        <div class="rating" data-question="techQ1">
+                            <div class="rating-item" data-value="1">1</div>
+                            <div class="rating-item" data-value="2">2</div>
+                            <div class="rating-item" data-value="3">3</div>
+                            <div class="rating-item" data-value="4">4</div>
+                            <div class="rating-item" data-value="5">5</div>
+                        </div>
+                        <div class="rating-labels">
+                            <span>Not Started</span>
+                            <span>Fully Optimized</span>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <h4>Question 14: Can you use existing tools (e.g., Zapier) or low-cost automation (e.g., n8n) to schedule discovery calls in seconds vs. manual delays?</h4>
+                        <p class="example"><i class="fas fa-lightbulb"></i> Example: 1 = All manual; 3 = Some automation; 5 = n8n auto-schedules calls instantly.</p>
+                        <p class="why-matters"><i class="fas fa-chart-line"></i> Why It Matters: Calls scheduled immediately are 60% more likely to happen (InsideSales).</p>
+                        <div class="rating" data-question="techQ2">
+                            <div class="rating-item" data-value="1">1</div>
+                            <div class="rating-item" data-value="2">2</div>
+                            <div class="rating-item" data-value="3">3</div>
+                            <div class="rating-item" data-value="4">4</div>
+                            <div class="rating-item" data-value="5">5</div>
+                        </div>
+                        <div class="rating-labels">
+                            <span>Not Started</span>
+                            <span>Fully Optimized</span>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-buttons">
+                        <a href="#section6-header" class="btn-prev" data-prev="section6"><i class="fas fa-arrow-left"></i> Previous</a>
+                        <a href="#section8-header" class="btn-next" data-next="section8" onclick="setDefaultValuesForSection('section7'); return true;">Next Section <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Section 8: Team Revenue Readiness -->
+                <div class="audit-section" id="section8">
+                    <div class="section-header">
+                        <div class="section-number">8</div>
+                        <div class="section-title">
+                            <h3 id="section8-header">Team Revenue Readiness</h3>
+                            <p>A team that leverages AI insights closes deals faster with less effort. AI tools and clear goals align reps to win more business in less time.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <h4>Question 15: Can your team use tools like Copilot or Grok to instantly research accounts/leads before calls?</h4>
+                        <p class="example"><i class="fas fa-lightbulb"></i> Example: 1 = No tools; 3 = Manual research; 5 = AI tools deliver instant insights.</p>
+                        <p class="why-matters"><i class="fas fa-chart-line"></i> Why It Matters: Pre-call prep with AI cuts research time by 50%, boosting win rates by 15% (Gong).</p>
+                        <div class="rating" data-question="teamQ1">
+                            <div class="rating-item" data-value="1">1</div>
+                            <div class="rating-item" data-value="2">2</div>
+                            <div class="rating-item" data-value="3">3</div>
+                            <div class="rating-item" data-value="4">4</div>
+                            <div class="rating-item" data-value="5">5</div>
+                        </div>
+                        <div class="rating-labels">
+                            <span>Not Started</span>
+                            <span>Fully Optimized</span>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <h4>Question 16: Have you set AI goals like 'cut sales cycles by 25%' or 'increase win rates by 20%' tied to specific deals?</h4>
+                        <p class="example"><i class="fas fa-lightbulb"></i> Example: 1 = No goals; 3 = General ideas; 5 = Precise, deal-focused targets.</p>
+                        <p class="why-matters"><i class="fas fa-chart-line"></i> Why It Matters: Specific goals drive 20% faster execution (HBR).</p>
+                        <div class="rating" data-question="teamQ2">
+                            <div class="rating-item" data-value="1">1</div>
+                            <div class="rating-item" data-value="2">2</div>
+                            <div class="rating-item" data-value="3">3</div>
+                            <div class="rating-item" data-value="4">4</div>
+                            <div class="rating-item" data-value="5">5</div>
+                        </div>
+                        <div class="rating-labels">
+                            <span>Not Started</span>
+                            <span>Fully Optimized</span>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-buttons">
+                        <a href="#section7-header" class="btn-prev" data-prev="section7"><i class="fas fa-arrow-left"></i> Previous</a>
+                        <a href="#results" class="btn-calculate" onclick="for(let i=1; i<=8; i++) setDefaultValuesForSection('section'+i); calculateScore(); return false;">Calculate <i class="fas fa-calculator"></i></a>
+                    </div>
+                </div>
+            </form>
+
+            <div id="results" class="results-section"></div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="contact-header">Get Expert Guidance</h2>
+                <p>Schedule a consultation to discuss your assessment results and get personalized recommendations.</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="Your email address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company</label>
+                            <input type="text" id="company" name="company" placeholder="Your company name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message (Optional)</label>
+                            <textarea id="message" name="message" placeholder="Any specific questions or concerns?"></textarea>
+                        </div>
+                        <button type="button" class="btn-primary">Schedule Consultation <i class="fas fa-calendar-alt"></i></button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email Us</h3>
+                        <p>info@spotcircuit.com</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3>Call Us</h3>
+                        <p>(555) 123-4567</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Visit Us</h3>
+                        <p>123 Tech Boulevard<br>San Francisco, CA 94107</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>SpotCircuit</h2>
+                    <p>Accelerating B2B Revenue with AI</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about-header">About</a></li>
+                        <li><a href="#audit-header">Audit</a></li>
+                        <li><a href="#results">Results</a></li>
+                        <li><a href="#contact-header">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> info@spotcircuit.com</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SpotCircuit. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="navigation.js"></script>
+</body>
+</html>
